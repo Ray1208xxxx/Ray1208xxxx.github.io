@@ -1,5 +1,5 @@
 ---
-title: 🎓 MIS - CMU
+title: 🎓 Master of IS - CMU
 date: 2023-09-28
 cover: /images/cmu-linkedin.jpeg
 categories:

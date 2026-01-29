@@ -11,17 +11,18 @@ hexo.extend.injector.register('head_end', `
         }
       }
     </script>
+
   <style>
     /* 3D Earth Container */
     #scene-container {
         position: relative;
         width: 100%; 
-        height: 100vh; /* Full viewport height at bottom */
+        height: 100vh;  
         z-index: 1; 
         opacity: 0;
         transition: opacity 1.5s ease;
         margin-top: 50px;
-        pointer-events: none; /* Allow scrolling over it */
+        pointer-events: none;  
     }
     body.starry-night {
         background-color: #050505 !important;
@@ -34,6 +35,7 @@ hexo.extend.injector.register('head_end', `
         background: transparent !important;
         transition: background 0.5s ease;
     }
+    
     /* 全屏遮罩层 */
     #loader-overlay {
         position: fixed;
@@ -465,13 +467,8 @@ hexo.extend.injector.register('head_end', `
     .cv-org { font-size: 17.5px; font-weight: 500; color: #444; }
     .cv-time { font-size: 14px; opacity: 0.5; font-family: monospace; white-space: nowrap; margin-left: 10px; }
     .cv-gpa { font-size: 14px; font-weight: 600; opacity: 0.8; font-family: monospace; color: #444; background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 4px; }
-    .cv-desc { font-size: 14px; opacity: 0.75; line-height: 1.6; margin-top: 5px; }
-    /* .cv-edu-section .cv-card { border-left: 5px solid #f97316; } .cv-edu-section .cv-org { color: #f97316; } .cv-edu-section .cv-logo-box i { color: #f97316; } */
-    /* .cv-exp-section .cv-card { border-left: 5px solid #3b82f6; } .cv-exp-section .cv-org { color: #3b82f6; } .cv-exp-section .cv-logo-box i { color: #3b82f6; } */
-    /* .cv-proj-section .cv-card { border-left: 5px solid #8b5cf6; } .cv-proj-section .cv-org { color: #8b5cf6; } .cv-proj-section .cv-logo-box i { color: #8b5cf6; } */
-    
+    .cv-desc { font-size: 15.5px; opacity: 0.75; line-height: 1.6; margin-top: 5px; }
 
-    /* 标题部分：去掉原本的下划线，缩小下方间距 */
     .job-header h2 {
         border-bottom: none !important;
         margin-bottom: 8px !important;
@@ -917,14 +914,14 @@ hexo.extend.injector.register('head_end', `
       color: var(--color);
 
       padding: 0.7em 1.8em;
-      border-radius: 50px; /* 改为圆角更符合整体风格 */
+      border-radius: 50px;  
       text-transform: uppercase;
-      height: 50px; /* 高度微调 */
-      width: 170px; /* 宽度微调 */
+      height: 50px;  
+      width: 170px;  
       display: grid;
       place-items: center;
 
-      background: rgba(255,255,255,0.65) !important;
+      background: #f5f5f5 !important;
       border: 1px solid #e5e5e5;
       backdrop-filter: blur(4px);
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -941,14 +938,13 @@ hexo.extend.injector.register('head_end', `
       transform: scale(1);
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     }
-    /* 滑动出来的图标层 */
     .tooltip-container span:last-child {
       position: absolute;
       top: 0%;
       left: 100%;
       width: 100%;
       height: 100%;
-      border-radius: 50px; /* 保持圆角一致 */
+      border-radius: 50px;  
       opacity: 1;
 
       background-color: var(--background);
@@ -961,7 +957,7 @@ hexo.extend.injector.register('head_end', `
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       display: grid;
       place-items: center;
-      font-size: 20px; /* 图标大一点 */
+      font-size: 20px;  
     }
     /* 上方弹出的 Tooltip */
     .tooltip {
@@ -997,9 +993,8 @@ hexo.extend.injector.register('head_end', `
       transform: translate(-50%) rotate(45deg);
       background: var(--color);
     }
-    /* Hover 状态 */
     .tooltip-container:hover .tooltip {
-      top: -120%; /* 稍微提得更高一点 */
+      top: -120%; 
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -1159,7 +1154,7 @@ hexo.extend.injector.register('body_end', `
           if (!sideCard.querySelector('.cv-sidebar-bio')) {
               var bioHTML = \`
                 <div class="cv-sidebar-bio">
-                    <p>Hi, 你好, Hola, Ciao, Bonjour</p>
+                    <p>Let everything unfold and go with the flow</p>
                     
                     <div class="cv-skill-divider"></div>
 
@@ -1469,14 +1464,13 @@ hexo.extend.injector.register('body_end', `
   <script type="module">
     import * as THREE from 'three';
 
-    // 1. 定义全局变量
     let scene, camera, renderer;
     let earthGroup; 
     let stars;
     let isSceneInit = false;
-    let isAutoRotating = true; // 新增：控制自动旋转
-    const siteMarkers = {};    // 新增：存储地点标记
-    let currentPulseTweens = []; // 新增：存储当前的脉冲动画
+    let isAutoRotating = true;  
+    const siteMarkers = {};     
+    let currentPulseTweens = [];  
     
     const CONFIG = {
         earthRadius: 10,
@@ -1536,7 +1530,6 @@ hexo.extend.injector.register('body_end', `
         createRealisticEarth();
         createAtmosphere();
         
-        // --- 新增：初始化红点标记 ---
         initMarkers();
         
         // Resize
@@ -1601,7 +1594,7 @@ hexo.extend.injector.register('body_end', `
 
     function createStars() {
         const geometry = new THREE.BufferGeometry();
-        const count = 10000;
+        const count = 20000;
         const posArray = new Float32Array(count * 3);
         for(let i=0; i<count*3; i++) {
             posArray[i] = (Math.random() - 0.5) * 600; 
@@ -1612,7 +1605,7 @@ hexo.extend.injector.register('body_end', `
         const starTexture = loader.load('https://threejs.org/examples/textures/sprites/disc.png');
 
         const material = new THREE.PointsMaterial({
-            size: 1.1,           
+            size: 0.9,           
             color: 0xffffff,     
             transparent: true,   
             opacity: 0.8,
@@ -1634,7 +1627,7 @@ hexo.extend.injector.register('body_end', `
         return new THREE.Vector3(x, y, z);
     }
 
-    // --- 新增：添加标记点函数 ---
+    // --- 添加标记点函数 ---
     function addMarker(lat, lon, id) {
         const pos = latLonToVector3(lat, lon, CONFIG.earthRadius);            
         // 标记线
@@ -1666,7 +1659,7 @@ hexo.extend.injector.register('body_end', `
         siteMarkers[id] = dot;
     }
 
-    // --- 新增：初始化所有坐标 ---
+    // --- 初始化所有坐标 ---
     function initMarkers() {
         addMarker(30.57, 104.06, 'chengdu');
         addMarker(-34.93, 138.60, 'adelaide');
@@ -1675,7 +1668,7 @@ hexo.extend.injector.register('body_end', `
         addMarker(34.05, -118.24, 'la');
     }
 
-    // --- 新增：暴露给 Window 的点击事件 ---
+    // --- 暴露给 Window 的点击事件 ---
     window.focusLocation = function(lat, lon, id) {
         if(!earthGroup || !window.TWEEN) return;
         
@@ -1763,7 +1756,7 @@ hexo.extend.injector.register('body_end', `
     function animate(time) {
         requestAnimationFrame(animate);
 
-        // --- 新增：更新 TWEEN 动画 ---
+        // --- 更新 TWEEN 动画 ---
         if (window.TWEEN) {
             window.TWEEN.update(time);
         }
@@ -1796,7 +1789,6 @@ hexo.extend.injector.register('body_end', `
         }
     }
     
-    // 观察 DOM 变化以初始化地球
     const observer = new MutationObserver((mutations) => {
         if (document.getElementById('scene-container') && !document.getElementById('scene-container-canvas')) {
             initEarth3D();
