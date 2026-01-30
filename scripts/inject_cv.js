@@ -1244,37 +1244,37 @@ hexo.extend.injector.register('body_end', `
                   <div class="earth-controls">
                       <div class="tooltip-container" onclick="window.focusLocation(30.57, 104.06, 'chengdu')">
                           <span class="tooltip">I was born here, this is my hometown</span>
-                          <span class="text">Chengdu</span>
-                          <span>🐼 🌶️ 🍲</span>
+                          <span class="text">🐼 Chengdu</span>
+                          <span>🌶️ 🍲 🇨🇳</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.focusLocation(-34.93, 138.60, 'adelaide')">
                           <span class="tooltip">Came here alone at 15 for high school</span>
-                          <span class="text">Adelaide</span>
-                          <span>🍷 🦘 🌊</span>
+                          <span class="text">🍷 Adelaide</span>
+                          <span>🦘 🌊 🇦🇺</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.focusLocation(-27.47, 153.02, 'brisbane')">
                           <span class="tooltip">Where my journey in CS and DS began</span>
-                          <span class="text">Brisbane</span>
-                          <span>🏖️ ☀️ 🐨</span>
+                          <span class="text">🏖️ Brisbane</span>
+                          <span>🎣 ☀️ 🇦🇺</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.focusLocation(40.44, -79.99, 'pittsburgh')">
                           <span class="tooltip">Earned my degree at a world-leading DS institution</span>
-                          <span class="text">Pittsburgh</span>
+                          <span class="text">💻 Pittsburgh</span>
                           <span>🏙️ 🌉 ⚙️</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.focusLocation(34.05, -118.24, 'la')">
                           <span class="tooltip">I lived for six months after graduation, I loved Here</span>
-                          <span class="text">Los Angeles</span>
-                          <span>🌴 🌅 🎬</span>
+                          <span class="text">🌴 Los Angeles</span>
+                          <span>🔭 🌅 🎬</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.resetView()">
                           <span class="tooltip">Reset View</span>
-                          <span class="text">Orbit View</span>
+                          <span class="text">🌍 Orbit View</span>
                           <span><i class="fa-solid fa-satellite"></i></span>
                       </div>
                   </div>
@@ -1605,7 +1605,7 @@ hexo.extend.injector.register('body_end', `
         const starTexture = loader.load('https://threejs.org/examples/textures/sprites/disc.png');
 
         const material = new THREE.PointsMaterial({
-            size: 0.9,           
+            size: 0.75,           
             color: 0xffffff,     
             transparent: true,   
             opacity: 0.8,
