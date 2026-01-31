@@ -19,7 +19,6 @@ home_banner:
   subtitle:
     text:
       - "Current Data Scientist @ Intel"
-      - "AI Engineer • Machine Learning Engineer"
       - "Open to collaborations!"
   text_color:
     light: "#ffffff"

@@ -1289,13 +1289,25 @@ hexo.extend.injector.register('body_end', `
                       <div class="tooltip-container" onclick="window.focusLocation(40.44, -79.99, 'pittsburgh')">
                           <span class="tooltip">Earned my degree at a world-leading DS institution</span>
                           <span class="text">💻 Pittsburgh</span>
-                          <span>🏙️ 🌉 ⚙️</span>
+                          <span>🏙️ 🌉 🇺🇸</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.focusLocation(34.05, -118.24, 'la')">
                           <span class="tooltip">I lived for six months after graduation, I loved Here</span>
                           <span class="text">🌴 Los Angeles</span>
-                          <span>🔭 🌅 🎬</span>
+                          <span>🎬 🌅 🇺🇸</span>
+                      </div>
+
+                      <div class="tooltip-container" onclick="window.focusLocation(30.04, 31.23, 'cairo')">
+                          <span class="tooltip">My first step onto Africa, land of Pharaohs</span>
+                          <span class="text">🏺 Cairo</span>
+                          <span>🐫 🏜️ 🇪🇬</span>
+                      </div>
+
+                      <div class="tooltip-container" onclick="window.focusLocation(-1.29, 36.82, 'nairobi')">
+                          <span class="tooltip">The Heart of Safari and Wild Nature</span>
+                          <span class="text">🦒 Nairobi</span>
+                          <span>🐘 🦓 🇰🇪</span>
                       </div>
 
                       <div class="tooltip-container" onclick="window.resetView()">
@@ -1692,6 +1704,8 @@ hexo.extend.injector.register('body_end', `
         addMarker(-27.47, 153.02, 'brisbane');   
         addMarker(40.44, -79.99, 'pittsburgh');  
         addMarker(34.05, -118.24, 'la');
+        addMarker(30.04, 31.23, 'cairo');   
+        addMarker(-1.29, 36.82, 'nairobi');
     }
 
     // --- 暴露给 Window 的点击事件 ---
