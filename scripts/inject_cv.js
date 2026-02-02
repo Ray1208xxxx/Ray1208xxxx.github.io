@@ -465,8 +465,8 @@ hexo.extend.injector.register('head_end', `
     .cv-card-subheader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .cv-role { font-size: 19px; font-weight: 700; color: #111; line-height: 1.2; }
     .cv-org { font-size: 17.5px; font-weight: 500; color: #444; }
-    .cv-time { font-size: 14px; opacity: 0.5; font-family: monospace; white-space: nowrap; margin-left: 10px; }
-    .cv-gpa { font-size: 14px; font-weight: 600; opacity: 0.8; font-family: monospace; color: #444; background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 4px; }
+    .cv-time { font-size: 16px; opacity: 0.5; font-family: monospace; white-space: nowrap; margin-left: 10px; }
+    .cv-gpa { font-size: 16px; font-weight: 600; opacity: 0.8; font-family: monospace; color: #444; background: rgba(0,0,0,0.04); padding: 2px 6px; border-radius: 4px; }
     .cv-desc { font-size: 15.5px; opacity: 0.75; line-height: 1.6; margin-top: 5px; }
 
     .job-header h2 {
