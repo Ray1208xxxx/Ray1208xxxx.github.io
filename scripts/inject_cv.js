@@ -40,12 +40,157 @@ hexo.extend.injector.register('head_end', `
     #loader-overlay {
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background-color: #252525; 
+        background-color: #ffffff; 
         z-index: 99999999;  
-        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        transition: opacity 1.2s ease-out, visibility 1.2s ease-out;
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    /* === 新的 3D Cube Loader 样式 === */
+    /* 重命名 .container 为 .cube-loader-container 防止冲突 */
+    .cube-loader-container {
+      --bg: #ff4500;
+      --ink: #000000;
+      --paper: #ffffff;
+      --accent-1: #00d2ff;
+      --accent-2: #ff00ff;
+      --accent-3: #ffef00;
+      --size: 110px;
+      --half: 55px;
+      --smooth-snap: cubic-bezier(0.85, 0, 0.15, 1);
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      perspective: 1500px;
+      transform: scale(1.25);
+    }
+    .action-rays {
+      position: absolute;
+      width: 300vmax;
+      height: 300vmax;
+      z-index: -1;
+    }
+    .cube-loader-container::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+      background-size: 15px 15px;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+    .stage {
+      position: relative;
+      width: var(--size);
+      height: var(--size);
+      transform-style: preserve-3d;
+      animation: stageJump 3s var(--smooth-snap) infinite;
+    }
+    @keyframes stageJump {
+      0%, 100% { transform: scale(1) rotateX(-20deg) rotateY(0deg); }
+      50% { transform: scale(1.3) rotateX(160deg) rotateY(180deg); }
+    }
+    .cube {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      animation: autoRotate 6s linear infinite;
+    }
+    @keyframes autoRotate {
+      to { transform: rotateY(360deg) rotateZ(360deg); }
+    }
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--paper);
+      border: 5px solid var(--ink);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: visible;
+      overflow: hidden;
+      box-shadow: 12px 12px 0 var(--ink);
+    }
+    .f-1 { transform: rotateY(0deg) translateZ(var(--half)); background: var(--accent-1); }
+    .f-2 { transform: rotateY(180deg) translateZ(var(--half)); background: var(--accent-2); }
+    .f-3 { transform: rotateY(90deg) translateZ(var(--half)); background: var(--accent-3); }
+    .f-4 { transform: rotateY(-90deg) translateZ(var(--half)); background: var(--paper); }
+    .f-5 { transform: rotateX(90deg) translateZ(var(--half)); background: #ff5252; }
+    .f-6 { transform: rotateX(-90deg) translateZ(var(--half)); background: #00e676; }
+    .face::before {
+      content: "";
+      position: absolute;
+      width: 150%;
+      height: 20px;
+      background: var(--ink);
+      transform: rotate(-45deg) translateY(-40px);
+      opacity: 0.2;
+    }
+    .panel-num {
+      font-family: "Arial Black", sans-serif;
+      font-size: 40px;
+      color: var(--ink);
+      line-height: 1;
+      margin: 0;
+      transform: skew(-10deg);
+      z-index: 2;
+    }
+    .panel-label {
+      font-family: "Arial Black", sans-serif;
+      font-size: 12px;
+      background: var(--ink);
+      color: #fff;
+      padding: 2px 8px;
+      margin-top: 5px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+    .pop-burst {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .word {
+      position: absolute;
+      font-family: "Arial Black", sans-serif;
+      font-size: 60px;
+      color: var(--paper);
+      -webkit-text-stroke: 3px var(--ink);
+      text-shadow: 8px 8px 0 var(--accent-2);
+      opacity: 0;
+      animation: comicFlash 3s var(--smooth-snap) infinite;
+    }
+    @keyframes comicFlash {
+      0%, 48%, 52%, 100% { opacity: 0; transform: scale(0.5) rotate(-20deg); }
+      50% { opacity: 1; transform: scale(1.4) rotate(5deg); }
+    }
+    .shadow-floor {
+      position: absolute;
+      bottom: -100px;
+      width: 150px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      filter: blur(10px);
+      animation: shadowPulse 3s var(--smooth-snap) infinite;
+    }
+    @keyframes shadowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(0.4); opacity: 0.1; }
     }
 
     /* From Uiverse.io by gsperandio */ 
@@ -166,14 +311,14 @@ hexo.extend.injector.register('head_end', `
       flex-direction: column;
       gap: 5px;      
       position: absolute;
-      top: 70%; 
+      top: 80%; 
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
     }
     .loading-text {
-      color: white;
-      font-size: 17pt;
+      color: #000;
+      font-size: 24pt;
       font-weight: 800;
       margin-left: 10px;
       font-family: sans-serif;
@@ -181,6 +326,7 @@ hexo.extend.injector.register('head_end', `
     }
     .dot {
       margin-left: 3px;
+      color: inherit;
       animation: blink 1.5s infinite;
       display: inline-block;
     }
@@ -1049,20 +1195,47 @@ hexo.extend.injector.register('head_end', `
 
 hexo.extend.injector.register('body_begin', `
   <div id="loader-overlay">
-      <div class="loop cubes">
-          <div class="item cubes"></div>
-          <div class="item cubes"></div>
-          <div class="item cubes"></div>
-          <div class="item cubes"></div>
-          <div class="item cubes"></div>
-          <div class="item cubes"></div>
+    <div class="cube-loader-container">
+      <div class="action-rays"></div>
+      <div class="pop-burst">
+        <div class="word"></div>
       </div>
-
-      <div class="loader">
-        <div class="loading-text">
-          Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+      <div class="stage">
+        <div class="cube">
+          <div class="face f-1">
+            <span class="panel-num">01</span>
+            <span class="panel-label">Start</span>
+          </div>
+          <div class="face f-2">
+            <span class="panel-num">02</span>
+            <span class="panel-label">Hello</span>
+          </div>
+          <div class="face f-3">
+            <span class="panel-num">03</span>
+            <span class="panel-label">Please</span>
+          </div>
+          <div class="face f-4">
+            <span class="panel-num">04</span>
+            <span class="panel-label">Wait</span>
+          </div>
+          <div class="face f-5">
+            <span class="panel-num">05</span>
+            <span class="panel-label">Boom</span>
+          </div>
+          <div class="face f-6">
+            <span class="panel-num">06</span>
+            <span class="panel-label">Loading</span>
+          </div>
         </div>
+        <div class="shadow-floor"></div>
       </div>
+    </div>
+
+    <div class="loader">
+      <div class="loading-text">
+        Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+      </div>
+    </div>
   </div>
 `);
 
@@ -1102,10 +1275,10 @@ hexo.extend.injector.register('body_end', `
             loader.style.visibility = 'hidden';
             setTimeout(function() {
                 loader.remove();  
-            }, 500);
+            }, 1200);
         }
     }
-    setTimeout(hideLoader, 2000);
+    setTimeout(hideLoader, 4000);
 
     // 2. Pjax 兼容
     document.addEventListener("pjax:send", function() {
