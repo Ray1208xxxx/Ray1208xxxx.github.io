@@ -1353,7 +1353,7 @@ hexo.extend.injector.register('body_end', `
           if (!sideCard.querySelector('.cv-sidebar-bio')) {
               var bioHTML = \`
                 <div class="cv-sidebar-bio">
-                    <p>Let everything unfold and go with the flow</p>
+                    <p>Let everything unfold and go with the flow.</p>
                     
                     <div class="cv-skill-divider"></div>
 
