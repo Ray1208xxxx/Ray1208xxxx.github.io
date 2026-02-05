@@ -321,7 +321,7 @@ hexo.extend.injector.register('head_end', `
       font-size: 24pt;
       font-weight: 800;
       margin-left: 10px;
-      font-family: sans-serif;
+      font-family: "Arial Black", sans-serif;
       letter-spacing: 1px;
     }
     .dot {
