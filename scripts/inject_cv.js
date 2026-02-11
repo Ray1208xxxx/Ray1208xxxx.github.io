@@ -193,7 +193,7 @@ hexo.extend.injector.register('head_end', `
       50% { transform: scale(0.4); opacity: 0.1; }
     }
 
-    /* From Uiverse.io by gsperandio */ 
+    /* gsperandio */ 
     .cubes {
       position: absolute;
       top: 50%;
@@ -464,7 +464,7 @@ hexo.extend.injector.register('head_end', `
       content: " "; position: absolute; height: 120px; width: 120px; left: 50%; top: 18px;
       transform: translateX(-140%); background-image: linear-gradient(orange, magenta);
       border-radius: 50%; z-index: -1; border: 2px solid #ffffffa6;
-      box-shadow: inset 10px 0px 20px #fff; animation: cvGlassAni 18s ease-in-out infinite;
+      box-shadow: inset 10px 0px 20px #fff; animation: cvGlassAni 10s ease-in-out infinite;
     }
     /* 小圆背景 */
     .cv-glass-wrap::before {
@@ -483,7 +483,7 @@ hexo.extend.injector.register('head_end', `
     .cv-glass-card::after {
       z-index: -1; content: " "; position: absolute; width: 150%; top: 0; left: 0; height: 10px;
       background: #ffffff; transform: rotateZ(50deg); filter: blur(30px);
-      animation: cvGlassShine 10s ease infinite;
+      animation: cvGlassShine 8s ease infinite;
     }
     /* 标题样式 */
     .cv-glass-title {
@@ -675,7 +675,7 @@ hexo.extend.injector.register('head_end', `
     @keyframes rotate { to { rotate: 360deg; } }
 
 
-    /* From Uiverse.io by ilkhoeri - Modified for Sidebar */ 
+    /* Modified for Sidebar */ 
     .contact-card {
       padding: 0;               
       border: none;             
@@ -1190,6 +1190,475 @@ hexo.extend.injector.register('head_end', `
             font-size: 14px;
         }
     }
+
+    /* gustavo_9243 */ 
+    .wrapper-404 {
+      --bg-dark: #fefefe;
+      --cam-body: #222;
+      --accent: #ff4757;
+      --paper: #ffffff;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+      cursor: crosshair;
+    }
+    .wrapper-404 *,
+    .wrapper-404 *::before,
+    .wrapper-404 *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .flash-overlay {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .wrapper-404:hover .flash-overlay {
+      animation: flash-burst 0.2s ease-out forwards;
+    }
+    .scene {
+      position: relative;
+      width: 100%;
+      min-height: 690px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 50px;
+    }
+    .camera {
+      position: relative;
+      z-index: 50;
+      width: 400px;
+      height: 260px;
+      transform-style: preserve-3d;
+      animation: camera-hover 6s ease-in-out infinite;
+    }
+    .camera-body {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+      border-radius: 35px;
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.7),
+        inset 0 1px 2px rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .texture-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.12;
+      background-image: radial-gradient(#ffffff 1px, transparent 0);
+      background-size: 4px 4px;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+    .stripe {
+      position: absolute;
+      top: 45%;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(90deg, #ff5e57, #ffdd59, #0be881, #4bcffa);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+    .lens {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle at 30% 30%, #444444, #000000);
+      border-radius: 50%;
+      border: 7px solid #333333;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+    .glass-reflex {
+      position: absolute;
+      top: 20%;
+      right: 20%;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+    .led-indicator {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      width: 16px;
+      height: 16px;
+      background: #ff4757;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #ff4757;
+      transition: opacity 0.3s;
+      opacity: 0.6;
+    }
+    .wrapper-404:hover .led-indicator {
+      opacity: 1;
+      box-shadow: 0 0 20px #ff4757;
+    }
+    .flash-bulb {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      width: 60px;
+      height: 40px;
+      background: #eeeeee;
+      border-radius: 8px;
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    .polaroid-group {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      z-index: 10;
+      transition: transform 0.8s cubic-bezier(0.2, 1, 0.4, 1);
+    }
+    .wrapper-404:hover .polaroid-group {
+      transform: translateX(-50%) translateY(280px);
+      transition-delay: 0.2s;
+    }
+    .polaroid {
+      width: 340px;
+      background: #ffffff;
+      padding: 18px 18px 0 18px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      border-radius: 8px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .photo-container {
+      position: relative;
+      width: 100%;
+      height: 280px;
+      background: #000000;
+      overflow: hidden;
+    }
+    .travolta-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) brightness(0.1) blur(4px);
+      transition: filter 0.5s ease;
+    }
+    .wrapper-404:hover .travolta-img {
+      filter: grayscale(0%) brightness(1) blur(0px);
+      transition: filter 2.5s ease-in-out 0.8s;
+    }
+    .chemical-layer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), transparent);
+      mix-blend-mode: overlay;
+    }
+    .bottom-label {
+      height: 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    .error-text {
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 800;
+      font-size: 20px;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+    }
+    @keyframes flash-burst {
+      0% {
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    @keyframes camera-hover {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+    .comic-brutal-button {
+      --primary-color: #ff3d3d;
+      --secondary-color: #3d3dff;
+      --text-color: #000000;
+      --accent-color: #ffef00;
+      --panel-color: #ffffff;
+      --shadow-color: rgba(0, 0, 0, 0.75);
+
+      position: relative;
+      font-size: 15px; /* Adjusted size to fit layout */
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      transform: rotate(-2deg);
+      transform-origin: center;
+      transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.5s ease;
+  
+      /* Initial state: hidden */
+      opacity: 0;
+      text-decoration: none; /* In case it's an <a> tag */
+      display: inline-block;
+    }
+    /* Fade in animation logic */
+    .wrapper-404:hover .comic-brutal-button {
+      opacity: 1;
+      transition: opacity 0.8s ease 1s, transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .button-inner {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--primary-color);
+      color: var(--text-color);
+      padding: 0.8em 1.5em;
+      z-index: 3;
+      overflow: hidden;
+      transform: skew(-3deg, 1deg);
+      transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+      clip-path: polygon(
+        0% 10%,
+        3% 0%,
+        97% 0%,
+        100% 10%,
+        100% 90%,
+        97% 100%,
+        3% 100%,
+        0% 90%
+      );
+    }
+
+    .button-text {
+      position: relative;
+      font-weight: 900;
+      font-size: 1.2em;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      z-index: 5;
+      color: var(--text-color);
+      text-shadow:
+        0.05em 0.05em 0 var(--panel-color),
+        -0.05em -0.05em 0 var(--panel-color),
+        0.05em -0.05em 0 var(--panel-color),
+        -0.05em 0.05em 0 var(--panel-color);
+      transform: rotate(2deg);
+    }
+    .button-frame {
+      position: absolute;
+      top: -0.3em;
+      left: -0.3em;
+      right: -0.3em;
+      bottom: -0.3em;
+      background-color: var(--accent-color);
+      border: 0.15em solid var(--text-color);
+      z-index: 1;
+      transition: transform 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    .button-shadow {
+      position: absolute;
+      top: 0.4em;
+      left: 0.4em;
+      right: -0.4em;
+      bottom: -0.4em;
+      background-color: var(--shadow-color);
+      z-index: 0;
+      transition: all 0.15s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    /* Halftone effect using CSS */
+    .halftone-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(
+        circle at 30% 30%,
+        rgba(0, 0, 0, 0.2) 0.1em,
+        transparent 0.1em
+      );
+      background-size: 0.5em 0.5em;
+      background-position: 0 0;
+      opacity: 0.3;
+      z-index: 2;
+      mix-blend-mode: multiply;
+    }
+    /* Ink splatter effect using CSS gradients */
+    .ink-splatter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      background: radial-gradient(
+          circle at 20% 30%,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.08) 20%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 70% 65%,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.08) 25%,
+          transparent 50%
+        ),
+        radial-gradient(
+          circle at 40% 50%,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.08) 30%,
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(0, 0, 0, 0.15) 0%,
+          rgba(0, 0, 0, 0.08) 15%,
+          transparent 40%
+        );
+    }
+    /* Button hover state */
+    .comic-brutal-button:hover {
+      transform: rotate(-1deg) scale(1.05);
+    }
+    .comic-brutal-button:hover .button-inner {
+      transform: skew(-5deg, 2deg);
+      background-color: var(--secondary-color);
+    }
+    .comic-brutal-button:hover .button-text {
+      color: var(--panel-color);
+      text-shadow:
+        0.05em 0.05em 0 var(--text-color),
+        -0.05em -0.05em 0 var(--text-color),
+        0.05em -0.05em 0 var(--text-color),
+        -0.05em 0.05em 0 var(--text-color);
+    }
+    .comic-brutal-button:hover .button-shadow {
+      transform: translate(0.2em, 0.2em);
+    }
+    .comic-brutal-button:hover .ink-splatter {
+      opacity: 1;
+    }
+    /* Button focus state */
+    .comic-brutal-button:focus {
+      outline: none;
+    }
+    .comic-brutal-button:focus .button-frame {
+      border-color: var(--secondary-color);
+    }
+    /* Button active state */
+    .comic-brutal-button:active {
+      transform: rotate(0) scale(0.98);
+    }
+    .comic-brutal-button:active .button-inner {
+      transform: skew(0, 0);
+    }
+    .comic-brutal-button:active .button-shadow {
+      transform: translate(0.1em, 0.1em);
+    }
+    /* Comic burst animation */
+    @keyframes burst {
+      0% { transform: scale(0.95); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .comic-brutal-button:active .button-text {
+      animation: burst 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    /* Add comic-style border on focus */
+    @keyframes dash {
+      to { stroke-dashoffset: -20; }
+    }
+    .comic-brutal-button:focus::after {
+      content: "";
+      position: absolute;
+      top: -0.5em;
+      left: -0.5em;
+      right: -0.5em;
+      bottom: -0.5em;
+      border: 0.15em dashed var(--text-color);
+      z-index: 0;
+      animation: dash 1s linear infinite;
+      pointer-events: none;
+    }
+    /* Additional brutalist comic book elements */
+    .comic-brutal-button::before {
+      content: "";
+      position: absolute;
+      top: 0.4em;
+      left: 0.8em;
+      width: 1em;
+      height: 1em;
+      background-color: var(--accent-color);
+      border-radius: 50%;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+    .comic-brutal-button:hover::before {
+      opacity: 0.7;
+    }
+    /* Action lines on click */
+    @keyframes action-lines {
+      0% {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+    }
+    .comic-brutal-button:active::before {
+      content: "";
+      position: absolute;
+      top: -1em;
+      left: -1em;
+      right: -1em;
+      bottom: -1em;
+      background-image: radial-gradient(var(--text-color) 0%, transparent 70%),
+        repeating-conic-gradient(
+          transparent 0%,
+          transparent 5%,
+          var(--text-color) 5%,
+          var(--text-color) 6%
+        );
+      opacity: 0;
+      z-index: 6;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      animation: action-lines 0.5s ease-out forwards;
+    }
+
   </style>
 `);
 
