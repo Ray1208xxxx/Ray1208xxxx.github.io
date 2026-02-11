@@ -1230,7 +1230,7 @@ hexo.extend.injector.register('head_end', `
     .scene {
       position: relative;
       width: 100%;
-      min-height: 690px;
+      min-height: 820px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
